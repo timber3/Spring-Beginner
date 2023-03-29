@@ -8,7 +8,13 @@ import java.util.List;
 import java.util.Optional;
 
 public class MemberService {
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+
+    // D.I : Dependency Injection (의존성 주입)
+    // 내부에서 인스턴스를 생성하지 않고 외부에서 넣어주는 형태
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     /*
     * 회원 가입
@@ -25,7 +31,7 @@ public class MemberService {
 
         // Optional 이기 때문에 ifPresent를 사용할 수 있음.
         result.ifPresent(m -> {
-            throw new IllegalStateException("이미 존재하는 값입니다.");
+            throw new IllegalStateException("이미 존재하는 회원입니다.");
         });
 
         /*
