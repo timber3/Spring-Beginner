@@ -9,13 +9,12 @@ import spring_beginner.spring_begin.repository.MemoryMemberRepository;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+
 public class MemberService {
     private final MemberRepository memberRepository;
 
     // D.I : Dependency Injection (의존성 주입)
     // 내부에서 인스턴스를 생성하지 않고 외부에서 넣어주는 형태
-    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
