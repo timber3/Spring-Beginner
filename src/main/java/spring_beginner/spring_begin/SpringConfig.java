@@ -1,13 +1,24 @@
 package spring_beginner.spring_begin;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import spring_beginner.spring_begin.repository.JdbcMemberRepository;
 import spring_beginner.spring_begin.repository.MemberRepository;
 import spring_beginner.spring_begin.repository.MemoryMemberRepository;
 import spring_beginner.spring_begin.service.MemberService;
 
+import javax.sql.DataSource;
+
 @Configuration
 public class SpringConfig {
+
+    private DataSource dataSource;
+
+    @Autowired
+    public SpringConfig(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     @Bean
     public MemberService memberService() {
@@ -16,7 +27,6 @@ public class SpringConfig {
 
     @Bean
     public MemberRepository memberRepository() {
-        return new MemoryMemberRepository();
+        return new JdbcMemberRepository(dataSource);
     }
-
 }
