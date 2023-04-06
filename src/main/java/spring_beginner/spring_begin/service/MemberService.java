@@ -2,6 +2,7 @@ package spring_beginner.spring_begin.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import spring_beginner.spring_begin.domain.Member;
 import spring_beginner.spring_begin.repository.MemberRepository;
 import spring_beginner.spring_begin.repository.MemoryMemberRepository;
@@ -9,7 +10,7 @@ import spring_beginner.spring_begin.repository.MemoryMemberRepository;
 import java.util.List;
 import java.util.Optional;
 
-
+@Transactional
 public class MemberService {
     private final MemberRepository memberRepository;
 
