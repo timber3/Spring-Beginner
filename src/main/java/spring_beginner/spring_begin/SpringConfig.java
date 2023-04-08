@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import spring_beginner.spring_begin.aop.TimeTraceAop;
 import spring_beginner.spring_begin.repository.*;
 import spring_beginner.spring_begin.service.MemberService;
 
@@ -45,4 +46,13 @@ public class SpringConfig {
         // return new JdbcTemplateMemberRepository(dataSource);
         return new JpaMemberRepository(em);
     }*/
+
+    /*
+    AOP가 등록되서 사용되는것을 의미함 -> 여기서 안적어 둘꺼면 aop 클래스에 @Component 달면 끝
+    @Bean
+    public TimeTraceAop timeTraceAop() {
+        return new TimeTraceAop();
+    }
+     */
+
 }
